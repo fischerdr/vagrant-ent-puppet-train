@@ -1,0 +1,14 @@
+http://downloads.puppetlabs.com/windows/puppet-latest.msi
+https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
+
+
+
+
+
+master.vm.synced_folder "manifests", "/etc/puppetlabs/puppet/manifests"
+master.vm.synced_folder "modules", "/etc/puppetlabs/puppet/modules"
+master.vm.synced_folder "files", "/etc/puppetlabs/puppet/files"
+master.vm.synced_folder "hieradata", "/etc/puppetlabs/puppet/hieradata"
+
+
+
