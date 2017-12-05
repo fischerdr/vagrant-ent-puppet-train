@@ -3,5 +3,4 @@
 # Vagrant-specific items.
 .vagrant/
 .vagrant.d/
-
-
+/notes.txt~
