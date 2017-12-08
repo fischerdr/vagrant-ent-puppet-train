@@ -26,7 +26,7 @@
       "ports": [],
       ":memory": 2048,
       ":box": "w2012",
-      ":bootstrap": "bootstrap-node-windows.sh"
+      ":bootstrap": "bootstrap-node-windows.bat"
     }
   }
 }

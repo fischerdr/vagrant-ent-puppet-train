@@ -38,6 +38,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		 	 	vb.customize ["modifyvm", :id, "--memory", node_values[':memory']]
 		 	 	vb.customize ["modifyvm", :id, "--name", node_name]
 		 	end
+		 	config.vm.synced_folder ".", "/vagrant"
 		 	config.vm.provision :shell, :path => node_values[':bootstrap']
 		end
 	end
