@@ -21,7 +21,7 @@
       ":box": "puppetlabs/centos-7.0-64-puppet",
       ":bootstrap": "bootstrap-node-rhel.sh"
     },
-      "agent03.example.com": {
+      "agent03": {
       ":ip": "192.168.35.22",
       "ports": [],
       ":memory": 2048,
