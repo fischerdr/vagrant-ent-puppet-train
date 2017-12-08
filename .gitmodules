@@ -1,0 +1,7 @@
+
+[submodule "vagrant-plugins/vagrant-vbguest-windows"]
+	path = vagrant-plugins/vagrant-vbguest-windows
+	url = https://github.com/m03/vagrant-vbguest-windows.git
+[submodule "vagrant-plugins/vagrant-vbguest"]
+	path = vagrant-plugins/vagrant-vbguest
+	url = https://github.com/dotless-de/vagrant-vbguest.git
