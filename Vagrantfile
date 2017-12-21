@@ -27,10 +27,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 			# configures all forwarding ports in JSON array
 		 	ports = node_values['ports']
 		 	ports.each do |port|
-		 		config.vm.network :forwarded_port,
-		 		host:  port[':host'],
-		 	 	guest: port[':guest'],
-		 	 	id:    port[':id']
+		 		config.vm.network :forwarded_port,host:  port[':host'], guest: port[':guest'],id:    port[':id']
 		 	end
 		 	config.vm.hostname = node_name
 		 	config.vm.network :private_network, ip: node_values[':ip']
@@ -38,7 +35,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		 	 	vb.customize ["modifyvm", :id, "--memory", node_values[':memory']]
 		 	 	vb.customize ["modifyvm", :id, "--name", node_name]
 		 	end
-		 	config.vm.synced_folder ".", "/vagrant"
+		 	synced_folders = node_values['synced_folders']
+		 	synced_folders.each do |local,remote|
+		 		config.vm.synced_folder local, remote
+		 	end
 		 	config.vm.provision :shell, :path => node_values[':bootstrap']
 		end
 	end

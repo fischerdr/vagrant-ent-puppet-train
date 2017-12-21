@@ -1,32 +1,46 @@
 {
   "nodes": {
-    "theforeman.example.com": {
+    "puppet.example.com": {
       ":ip": "192.168.35.5",
       "ports": [],
       ":memory": 1024,
       ":box": "puppetlabs/centos-7.0-64-puppet",
-      ":bootstrap": "bootstrap-foreman.sh"
+      ":bootstrap": "bootstrap-foreman.sh",
+      "synced_folders": {".":"/vagrant"}
     },
+    
+    "puppetdb.example.com": {
+      ":ip": "192.168.35.5",
+      "ports": [],
+      ":memory": 1024,
+      ":box": "puppetlabs/centos-7.0-64-puppet",
+      ":bootstrap": "bootstrap-foreman.sh",
+      "synced_folders": {".":"/vagrant"}
+    },
+    
     "agent01.example.com": {
       ":ip": "192.168.35.20",
       "ports": [],
       ":memory": 1024,
       ":box": "puppetlabs/centos-7.0-64-puppet",
-      ":bootstrap": "bootstrap-node-rhel.sh"
+      ":bootstrap": "bootstrap-node-rhel.sh",
+      "synced_folders": {".":"/vagrant"}
     },
     "agent02.example.com": {
       ":ip": "192.168.35.21",
       "ports": [],
       ":memory": 1024,
       ":box": "puppetlabs/centos-7.0-64-puppet",
-      ":bootstrap": "bootstrap-node-rhel.sh"
+      ":bootstrap": "bootstrap-node-rhel.sh",
+      "synced_folders": {".":"/vagrant"}
     },
       "agent03": {
       ":ip": "192.168.35.22",
       "ports": [],
       ":memory": 2048,
       ":box": "w2012",
-      ":bootstrap": "bootstrap-node-windows.bat"
+      ":bootstrap": "bootstrap-node-windows.bat",
+      "synced_folders": {".":"/vagrant"}
     }
   }
 }
