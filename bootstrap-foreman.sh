@@ -29,6 +29,7 @@ if ps aux | grep "/usr/share/foreman" | grep -v grep 2> /dev/null
 	sudo firewall-cmd --permanent --add-port=67-69/udp
 	sudo firewall-cmd --permanent --add-port=53/tcp
 	sudo firewall-cmd --permanent --add-port=53/udp
+	sudo firewall-cmd --permanent --add-port=5432/tcp
 	sudo firewall-cmd --permanent --add-port=8443/tcp
 	sudo firewall-cmd --permanent --add-port=8140/tcp
 	
