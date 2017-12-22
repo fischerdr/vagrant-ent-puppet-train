@@ -3,13 +3,15 @@
     "puppet.example.com": {
       ":ip": "192.168.35.5",
       "ports": [],
-      ":memory": 1024,
+      ":memory": 4096,
       ":box": "puppetlabs/centos-7.0-64-puppet",
       ":bootstrap": "bootstrap-foreman.sh",
-      "synced_folders": {".":"/vagrant"}
+      "synced_folders": {".":"/vagrant","puppetmaster/manifests":"/etc/puppetlabs/puppet/manifests",
+      	  "puppetmaster/modules":"/etc/puppetlabs/puppet/modules","puppetmaster/files":"/etc/puppetlabs/puppet/files",
+      	  "puppetmaster/hieradata":"/etc/puppetlabs/puppet/hieradata"}
     },
     "puppetdb.example.com": {
-      ":ip": "192.168.35.5",
+      ":ip": "192.168.35.6",
       "ports": [],
       ":memory": 1024,
       ":box": "puppetlabs/centos-7.0-64-puppet",

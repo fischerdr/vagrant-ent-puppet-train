@@ -19,6 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		config.vbguest.iso_path = "http://download.virtualbox.org/virtualbox/%{version}/VBoxGuestAdditions_%{version}.iso"
 		config.hostmanager.enabled = true
 		config.hostmanager.manage_host = true
+		config.hostmanager.manage_guest = true
 		config.hostmanager.ignore_private_ip = false
 		config.hostmanager.include_offline = true
 		config.vm.define node_name do |config|
@@ -27,7 +28,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 			# configures all forwarding ports in JSON array
 		 	ports = node_values['ports']
 		 	ports.each do |port|
-		 		config.vm.network :forwarded_port,host:  port[':host'], guest: port[':guest'],id:    port[':id']
+		 		config.vm.network "forwarded_port", host: port[':host'], guest: port[':guest'],id: port[':id']
 		 	end
 		 	config.vm.hostname = node_name
 		 	config.vm.network :private_network, ip: node_values[':ip']
@@ -41,16 +42,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		 	end
 		 	config.vm.provision :shell, :path => node_values[':bootstrap']
 		end
-	end
-	config.vm.define :master do |master|
-		master.vm.hostname = "puppet"
-		master.vm.box      = "centos-64-x86_64-minimal-pe-master"
-		master.vm.box_url  = "https://s3-eu-west-1.amazonaws.com/xebia-vm/vagrant-boxes/centos-64-x86_64-minimal-pe-master.box"
-		master.vm.network :private_network, ip: "192.168.111.111"
-		master.vm.network :forwarded_port, guest: 443, host: 8443
-		master.vm.synced_folder "manifests", "/etc/puppetlabs/puppet/manifests"
-		master.vm.synced_folder "modules", "/etc/puppetlabs/puppet/modules"
-		master.vm.synced_folder "files", "/etc/puppetlabs/puppet/files"
-		master.vm.synced_folder "hieradata", "/etc/puppetlabs/puppet/hieradata"
 	end
 end
